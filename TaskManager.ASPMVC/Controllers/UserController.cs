@@ -26,10 +26,12 @@ namespace TaskManager.ASPMVC.Controllers
                 ModelState.CheckIfSymbolChar(form.Password, nameof(form.Password));
                 if (!ModelState.IsValid) throw new Exception("Formulaire invalide");
                 //Envoyer les infos du formulaire dans la DB
+                TempData["successMessage"] = "Enregistrement réussi!";
                 return RedirectToAction("Index", "Home");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ViewBag.errorMessage = ex.Message;
                 return View();
             }
         }

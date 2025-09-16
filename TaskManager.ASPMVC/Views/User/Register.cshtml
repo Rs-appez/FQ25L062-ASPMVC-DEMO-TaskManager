@@ -2,6 +2,13 @@
 
 @model UserRegisterForm
 
+@if(ViewData.ContainsKey("errorMessage")){
+    <div class="alert alert-danger">
+        <p>@ViewBag.errorMessage</p>
+        @* <p>@ViewData["errorMessage"]</p> *@
+    </div>
+}
+
 <form method="post">
     <div>
         <label asp-for="Email" class="form-label"></label>

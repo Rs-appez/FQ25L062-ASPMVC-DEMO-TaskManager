@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Text.RegularExpressions;
+using TaskManager.ASPMVC.Helpers;
 using TaskManager.ASPMVC.Models.User;
 
 namespace TaskManager.ASPMVC.Controllers
@@ -17,6 +20,10 @@ namespace TaskManager.ASPMVC.Controllers
         {
             try
             {
+                ModelState.CheckIfNumbers(form.Password, nameof(form.Password));
+                ModelState.CheckIfLowerChar(form.Password, nameof(form.Password));
+                ModelState.CheckIfUpperChar(form.Password, nameof(form.Password));
+                ModelState.CheckIfSymbolChar(form.Password, nameof(form.Password));
                 if (!ModelState.IsValid) throw new Exception("Formulaire invalide");
                 //Envoyer les infos du formulaire dans la DB
                 return RedirectToAction("Index", "Home");
@@ -31,5 +38,6 @@ namespace TaskManager.ASPMVC.Controllers
         {
             return View();
         }
+
     }
 }

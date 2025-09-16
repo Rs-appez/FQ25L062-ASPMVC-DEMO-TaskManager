@@ -11,7 +11,17 @@
     <div>
         <label asp-for="Password" class="form-label"></label>
         <input asp-for="Password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
+        @* //Attention asp-validation-for n'est disponible que pour la première erreur
+        <span asp-validation-for="Password" class="text-danger"></span>*@
+        @*Si plusieurs erreurs à afficher :*@
+        @if (ViewContext.ModelState.ContainsKey("Password"))
+        {
+            @foreach(var error in ViewContext.ModelState["Password"].Errors)
+            {
+                <p class="text-danger">@error.ErrorMessage</p>
+            }
+        }
+        
     </div>
     <div>
         <label asp-for="ConfirmPassword" class="form-label"></label>

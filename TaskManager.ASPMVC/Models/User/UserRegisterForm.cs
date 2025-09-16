@@ -13,6 +13,8 @@ namespace TaskManager.ASPMVC.Models.User
         [Required(ErrorMessage = "Le mot de passe est obligatoire.")]
         [DisplayName("Le mot de passe : ")]
         [DataType(DataType.Password)]
+        [MinLength(8, ErrorMessage = "Le mot de passe doit contenir un minimum de 8 caractères.")]
+        [MaxLength(128, ErrorMessage = "Le mot de passe doit contenir un maximum de 128 caractères.")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "La confirmation du mot de passe est obligatoire.")]

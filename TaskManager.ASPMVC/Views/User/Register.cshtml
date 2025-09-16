@@ -1,22 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@using TaskManager.ASPMVC.Models.User
+
+@model UserRegisterForm
+
 @{
+    ModelStateDictionary modelState = ViewContext.ModelState;
 }
-<form action="/" method="post">
+
+@using(Html.BeginForm()){
     <div>
-        <label for="email">Adresse Email:</label>
-        <input type="email" name="email" id="email" />
+        @Html.LabelFor(m => Model.Email, new { @class = "form-label" })
+        @Html.EditorFor(m => Model.Email, new { HtmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => Model.Email, null, new { @class = "text-danger" })
     </div>
     <div>
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" />
+        @Html.LabelFor(m => Model.Password, new { @class="form-label"})
+        @Html.EditorFor(m => Model.Password, new { HtmlAttributes = new { @class = "form-control"}})
+        @Html.ValidationMessageFor(m => Model.Password, null, new { @class = "text-danger" })
     </div>
     <div>
-        <label for="confirm-password">Corfirmer le mot de passe:</label>
-        <input type="password" id="confirm-password" name="confirm-password" />
+        @Html.LabelFor(m => Model.ConfirmPassword, new { @class = "form-label" })
+        @Html.EditorFor(m => Model.ConfirmPassword, new { HtmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => Model.ConfirmPassword, null, new { @class = "text-danger" })
     </div>
     <div>
-        <button type="submit">S'enregistrer</button>
+        <button type="submit" class="btn btn-primary">S'enregistrer</button>
+        @Html.ActionLink("Revenir à l'accueil","Index","Home", null, new { @class="btn btn-secondary" })
     </div>
-</form>
+}
+

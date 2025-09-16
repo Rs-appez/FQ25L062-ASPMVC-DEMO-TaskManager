@@ -12,6 +12,7 @@ namespace TaskManager.ASPMVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Register(UserRegisterForm form)
         {
             try

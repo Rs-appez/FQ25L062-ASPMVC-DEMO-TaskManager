@@ -68,5 +68,16 @@
     <Build Include="StoredProcedures\SP_User_Get.sql" />
     <Build Include="StoredProcedures\SP_User_Get_All.sql" />
     <Build Include="StoredProcedures\SP_User_Delete.sql" />
+    <Build Include="Tables\Task.sql" />
+    <Build Include="Tables\User_Task.sql" />
+    <Build Include="StoredProcedures\SP_Task_Get_All.sql" />
+    <Build Include="StoredProcedures\SP_Task_Get.sql" />
+    <Build Include="StoredProcedures\SP_Task_Insert.sql" />
+    <Build Include="StoredProcedures\SP_Task_Update.sql" />
+    <Build Include="StoredProcedures\SP_Task_Delete.sql" />
+    <Build Include="StoredProcedures\SP_TaskUser_ChangeStatus.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TaskManager.DB.publish.xml" />
   </ItemGroup>
 </Project>

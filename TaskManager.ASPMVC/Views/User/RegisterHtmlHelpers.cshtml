@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@using TaskManager.ASPMVC.Models.User
+
+@model UserRegisterForm
+
+@{
+    ModelStateDictionary modelState = ViewContext.ModelState;
+}
+
+@using(Html.BeginForm()){
+    <div>
+        @Html.LabelFor(m => Model.Email, new { @class = "form-label" })
+        @Html.EditorFor(m => Model.Email, new { HtmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => Model.Email, null, new { @class = "text-danger" })
+    </div>
+    <div>
+        @Html.LabelFor(m => Model.Password, new { @class="form-label"})
+        @Html.EditorFor(m => Model.Password, new { HtmlAttributes = new { @class = "form-control"}})
+        @Html.ValidationMessageFor(m => Model.Password, null, new { @class = "text-danger" })
+    </div>
+    <div>
+        @Html.LabelFor(m => Model.ConfirmPassword, new { @class = "form-label" })
+        @Html.EditorFor(m => Model.ConfirmPassword, new { HtmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => Model.ConfirmPassword, null, new { @class = "text-danger" })
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">S'enregistrer</button>
+        @Html.ActionLink("Revenir à l'accueil","Index","Home", null, new { @class="btn btn-secondary" })
+    </div>
+}
+

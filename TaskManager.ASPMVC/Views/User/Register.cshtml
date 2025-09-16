@@ -1,31 +1,26 @@
-﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
-@using TaskManager.ASPMVC.Models.User
+﻿@using TaskManager.ASPMVC.Models.User
 
 @model UserRegisterForm
 
-@{
-    ModelStateDictionary modelState = ViewContext.ModelState;
-}
-
-@using(Html.BeginForm()){
+<form method="post">
     <div>
-        @Html.LabelFor(m => Model.Email, new { @class = "form-label" })
-        @Html.EditorFor(m => Model.Email, new { HtmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(m => Model.Email, null, new { @class = "text-danger" })
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class = "form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div>
-        @Html.LabelFor(m => Model.Password, new { @class="form-label"})
-        @Html.EditorFor(m => Model.Password, new { HtmlAttributes = new { @class = "form-control"}})
-        @Html.ValidationMessageFor(m => Model.Password, null, new { @class = "text-danger" })
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div>
-        @Html.LabelFor(m => Model.ConfirmPassword, new { @class = "form-label" })
-        @Html.EditorFor(m => Model.ConfirmPassword, new { HtmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(m => Model.ConfirmPassword, null, new { @class = "text-danger" })
+        <label asp-for="ConfirmPassword" class="form-label"></label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
     <div>
         <button type="submit" class="btn btn-primary">S'enregistrer</button>
-        @Html.ActionLink("Revenir à l'accueil","Index","Home", null, new { @class="btn btn-secondary" })
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Revenir à l'accueil</a>
     </div>
-}
+</form>
 

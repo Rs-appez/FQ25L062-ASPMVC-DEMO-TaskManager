@@ -6,7 +6,8 @@ BEGIN
 	SELECT	[UserId],
 			[Email],
 			[Role],
-			[CreationDate]
+			[CreationDate],
+			[DisableDate]
 		FROM [User]
 		WHERE	[Email] = @email
 			AND	[Password] = [dbo].[SF_HashAndSalt](@password, [Salt])

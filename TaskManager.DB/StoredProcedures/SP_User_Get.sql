@@ -4,7 +4,8 @@ AS
 	SELECT	[UserId],
 			[Email],
 			[Role],
-			[CreationDate]
+			[CreationDate],
+			[DisableDate]
 		FROM [User]
 		WHERE [UserId] = @userId
 RETURN 0

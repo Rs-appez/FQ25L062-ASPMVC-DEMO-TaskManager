@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskManager.DAL.Entities
 {
-    internal class User
+    public class User
     {
         public Guid UserId { get; set; }
         public string Email { get; set; }

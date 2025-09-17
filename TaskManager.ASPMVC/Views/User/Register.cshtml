@@ -1,6 +1,9 @@
 ﻿@using TaskManager.ASPMVC.Models.User
 
 @model UserRegisterForm
+@{
+    Layout = "_LayoutWithoutNavbar";
+}
 
 @if(ViewData.ContainsKey("errorMessage")){
     <div class="alert alert-danger">

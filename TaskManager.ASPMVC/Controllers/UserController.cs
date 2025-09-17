@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Text.RegularExpressions;
 using TaskManager.ASPMVC.Helpers;
 using TaskManager.ASPMVC.Models.User;
+using TaskManager.BLL.Services;
 
 namespace TaskManager.ASPMVC.Controllers
 {
     public class UserController : Controller
     {
+        private readonly UserService _userService = new UserService();
         [ViewData]
         public string Title { get; set; }
         //Route : /User/Register

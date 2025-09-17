@@ -8,9 +8,12 @@ namespace TaskManager.ASPMVC.Controllers
 {
     public class UserController : Controller
     {
+        [ViewData]
+        public string Title { get; set; }
         //Route : /User/Register
         public IActionResult Register()
         {
+            Title = "Enregistrez-vous";
             return View();
         }
 
@@ -18,6 +21,7 @@ namespace TaskManager.ASPMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Register(UserRegisterForm form)
         {
+            Title = "Enregistrez-vous";
             try
             {
                 ModelState.CheckIfNumbers(form.Password, nameof(form.Password));

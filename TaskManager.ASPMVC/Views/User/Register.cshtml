@@ -1,8 +1,10 @@
-﻿@using TaskManager.ASPMVC.Models.User
-
-@model UserRegisterForm
+﻿@model UserRegisterForm
 @{
     Layout = "_LayoutWithoutNavbar";
+}
+
+@section CSS{
+    <link rel="stylesheet" type="text/css" href="~/css/register.css"/>
 }
 
 @if(ViewData.ContainsKey("errorMessage")){

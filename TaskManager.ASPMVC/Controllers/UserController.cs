@@ -14,6 +14,7 @@ namespace TaskManager.ASPMVC.Controllers
         public IActionResult Register()
         {
             Title = "Enregistrez-vous";
+            //return View("RegisterScaffold");
             return View();
         }
 
@@ -36,13 +37,31 @@ namespace TaskManager.ASPMVC.Controllers
             catch (Exception ex)
             {
                 ViewBag.errorMessage = ex.Message;
+                //return View("RegisterScaffold");
                 return View();
             }
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<UserListItem> model = new List<UserListItem>() { 
+                new UserListItem(){ 
+                    UserId = Guid.NewGuid(), 
+                    Email = "samuel.legrain@bstorm.be",
+                    Role = "Admin"
+                },
+                new UserListItem(){
+                    UserId = Guid.NewGuid(),
+                    Email = "michael.person@bstorm.be",
+                    Role = "Admin"
+                },
+                new UserListItem(){
+                    UserId = Guid.NewGuid(),
+                    Email = "thierry.morre@bstorm.be",
+                    Role = "User"
+                }
+            };
+            return View(model);
         }
 
     }

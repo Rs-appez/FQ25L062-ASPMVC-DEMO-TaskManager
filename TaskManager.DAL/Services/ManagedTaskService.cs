@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Common.Repositories;
 using TaskManager.DAL.Entities;
+using TaskManager.DAL.Mapper;
 
 namespace TaskManager.DAL.Services
 {
@@ -45,15 +46,7 @@ namespace TaskManager.DAL.Services
                     {
                         while (reader.Read())
                         {
-                            yield return new ManagedTask()
-                            {
-                                TaskId = (Guid)reader[nameof(ManagedTask.TaskId)],
-                                Title = (string)reader[nameof(ManagedTask.Title)],
-                                Description = (reader[nameof(ManagedTask.Description)] is DBNull) ? null : (string)reader[nameof(ManagedTask.Description)],
-                                CreationDate = (DateTime)reader[nameof(ManagedTask.CreationDate)],
-                                CreatorId = (Guid)reader[nameof(ManagedTask.CreatorId)],
-                                DeadLine = (reader[nameof(ManagedTask.DeadLine)] is DBNull) ? null : (DateTime)reader[nameof(ManagedTask.DeadLine)]
-                            };
+                            yield return reader.ToManagedTask();
                         }
                     }
                 }
@@ -74,15 +67,7 @@ namespace TaskManager.DAL.Services
                     {
                         if (reader.Read())
                         {
-                            return new ManagedTask()
-                            {
-                                TaskId = (Guid)reader[nameof(ManagedTask.TaskId)],
-                                Title = (string)reader[nameof(ManagedTask.Title)],
-                                Description = (reader[nameof(ManagedTask.Description)] is DBNull) ? null : (string)reader[nameof(ManagedTask.Description)],
-                                CreationDate = (DateTime)reader[nameof(ManagedTask.CreationDate)],
-                                CreatorId = (Guid)reader[nameof(ManagedTask.CreatorId)],
-                                DeadLine = (reader[nameof(ManagedTask.DeadLine)] is DBNull) ? null : (DateTime)reader[nameof(ManagedTask.DeadLine)]
-                            };
+                            return reader.ToManagedTask();
                         }
                         throw new ArgumentOutOfRangeException(nameof(taskId));
                     }

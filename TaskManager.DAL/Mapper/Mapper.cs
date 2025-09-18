@@ -10,9 +10,10 @@ namespace TaskManager.DAL.Mapper
 {
     internal static class Mapper
     {
+        #region User
         public static User ToUser(this IDataRecord record)
         {
-            if(record is null) throw new ArgumentNullException(nameof(record));
+            if (record is null) throw new ArgumentNullException(nameof(record));
             return new User()
             {
                 UserId = (Guid)record["UserId"],
@@ -25,5 +26,21 @@ namespace TaskManager.DAL.Mapper
                 DisableDate = (record["DisableDate"] is DBNull) ? null : (DateTime)record["DisableDate"]
             };
         }
+        #endregion
+        #region ManagedTask
+        public static ManagedTask ToManagedTask(this IDataRecord record)
+        {
+            if (record is null) throw new ArgumentNullException(nameof(record));
+            return new ManagedTask()
+            {
+                TaskId = (Guid)record[nameof(ManagedTask.TaskId)],
+                Title = (string)record[nameof(ManagedTask.Title)],
+                Description = (record[nameof(ManagedTask.Description)] is DBNull) ? null : (string)record[nameof(ManagedTask.Description)],
+                CreationDate = (DateTime)record[nameof(ManagedTask.CreationDate)],
+                CreatorId = (Guid)record[nameof(ManagedTask.CreatorId)],
+                DeadLine = (record[nameof(ManagedTask.DeadLine)] is DBNull) ? null : (DateTime)record[nameof(ManagedTask.DeadLine)]
+            };
+        }
+        #endregion
     }
 }

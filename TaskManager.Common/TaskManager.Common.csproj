@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TaskManager.Common\TaskManager.Common.csproj" />
-    <ProjectReference Include="..\TaskManager.DAL\TaskManager.DAL.csproj" />
-  </ItemGroup>
-
 </Project>

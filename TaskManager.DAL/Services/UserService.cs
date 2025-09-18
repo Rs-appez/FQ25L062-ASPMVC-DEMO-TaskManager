@@ -5,12 +5,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManager.Common.Repositories;
 using TaskManager.DAL.Entities;
 using TaskManager.DAL.Mapper;
 
 namespace TaskManager.DAL.Services
 {
-    public class UserService
+    public class UserService : IUserRepository<User>
     {
         private readonly string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TaskManager;Integrated Security=True";
 

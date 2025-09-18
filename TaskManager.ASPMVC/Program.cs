@@ -1,3 +1,7 @@
+using TaskManager.Common.Repositories;
+using B = TaskManager.BLL.Services;
+using D = TaskManager.DAL.Services;
+
 namespace TaskManager.ASPMVC
 {
     public class Program
@@ -8,6 +12,9 @@ namespace TaskManager.ASPMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IUserRepository<BLL.Entities.User>, B.UserService>();
+            builder.Services.AddScoped<IUserRepository<DAL.Entities.User>, D.UserService>();
+            //builder.Services.AddScoped<IUserRepository<DAL.Entities.User>, D.UserFakeService>();
 
             var app = builder.Build();
 

@@ -5,12 +5,18 @@ using TaskManager.ASPMVC.Helpers;
 using TaskManager.ASPMVC.Mapper;
 using TaskManager.ASPMVC.Models.User;
 using TaskManager.BLL.Services;
+using TaskManager.Common.Repositories;
 
 namespace TaskManager.ASPMVC.Controllers
 {
     public class UserController : Controller
     {
-        private readonly UserService _userService = new UserService();
+        private readonly IUserRepository<BLL.Entities.User> _userService;
+
+        public UserController(IUserRepository<BLL.Entities.User> userRepository)
+        {
+            _userService = userRepository;
+        }
 
         [ViewData]
         public string Title { get; set; }

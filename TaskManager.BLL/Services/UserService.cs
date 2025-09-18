@@ -5,13 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManager.BLL.Entities;
 using TaskManager.BLL.Mapper;
+using TaskManager.Common.Repositories;
 using D = TaskManager.DAL.Services;
 
 namespace TaskManager.BLL.Services
 {
-    public class UserService
+    public class UserService : IUserRepository<User>
     {
-        private D.UserService _dalService = new D.UserService();
+        private readonly IUserRepository<DAL.Entities.User> _dalService;
+
+        public UserService(IUserRepository<DAL.Entities.User> userRepository)
+        {
+            _dalService = userRepository;
+        }
 
         public IEnumerable<User> Get()
         {

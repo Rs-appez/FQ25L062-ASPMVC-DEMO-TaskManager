@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TaskManager.BLL\TaskManager.BLL.csproj" />
+    <ProjectReference Include="..\TaskManager.Common\TaskManager.Common.csproj" />
     <ProjectReference Include="..\TaskManager.DAL\TaskManager.DAL.csproj" />
   </ItemGroup>
 

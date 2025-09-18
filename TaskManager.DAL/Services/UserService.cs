@@ -15,7 +15,9 @@ namespace TaskManager.DAL.Services
     public class UserService : BaseService, IUserRepository<User>
     {
         public UserService(IConfiguration configuration) : base(configuration, "localDb") { }
-
+        
+        /* Constructeur pour les tests en console
+        public UserService() { }*/
         public IEnumerable<User> Get()
         {
             using (SqlConnection connection = new SqlConnection(_connectionString)) {

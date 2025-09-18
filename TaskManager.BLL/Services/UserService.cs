@@ -19,6 +19,12 @@ namespace TaskManager.BLL.Services
             _dalService = userRepository;
         }
 
+        /* Constructeur pour les tests en console
+        public UserService()
+        {
+            _dalService = new DAL.Services.UserService();
+        }*/
+
         public IEnumerable<User> Get()
         {
             return _dalService.Get().Select(dal => dal.ToBLL());

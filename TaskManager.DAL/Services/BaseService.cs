@@ -15,5 +15,11 @@ namespace TaskManager.DAL.Services
         {
             _connectionString = configuration.GetConnectionString(connectionStringName);
         }
+
+        /* Constructeur pour les tests en console
+        protected BaseService()
+        {
+            _connectionString = @"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=TaskManager;Integrated Security=True";
+        }*/
     }
 }

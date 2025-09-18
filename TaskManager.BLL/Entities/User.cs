@@ -32,6 +32,11 @@ namespace TaskManager.BLL.Entities
             Password = password;
         }
 
+        public User(Guid userId)
+        {
+            UserId = userId;
+        }
+
         public UserRole ChangeRole()
         {
             Role = (Role == UserRole.User) ? UserRole.Admin : UserRole.User;

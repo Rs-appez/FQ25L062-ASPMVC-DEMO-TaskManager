@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Text.RegularExpressions;
 using TaskManager.ASPMVC.Helpers;
+using TaskManager.ASPMVC.Mapper;
 using TaskManager.ASPMVC.Models.User;
 using TaskManager.BLL.Services;
 
@@ -10,6 +11,7 @@ namespace TaskManager.ASPMVC.Controllers
     public class UserController : Controller
     {
         private readonly UserService _userService = new UserService();
+
         [ViewData]
         public string Title { get; set; }
         //Route : /User/Register
@@ -33,8 +35,10 @@ namespace TaskManager.ASPMVC.Controllers
                 ModelState.CheckIfSymbolChar(form.Password, nameof(form.Password));
                 if (!ModelState.IsValid) throw new Exception("Formulaire invalide");
                 //Envoyer les infos du formulaire dans la DB
+                Guid userId = _userService.Insert(form.ToBLL());
                 TempData["successMessage"] = "Enregistrement réussi!";
                 return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Details", "User", new { id = userId });
             }
             catch (Exception ex)
             {
@@ -46,9 +50,9 @@ namespace TaskManager.ASPMVC.Controllers
 
         public IActionResult Index()
         {
-            List<UserListItem> model = new List<UserListItem>() { 
-                new UserListItem(){ 
-                    UserId = Guid.NewGuid(), 
+            /*List<UserListItem> model = new List<UserListItem>() {
+                new UserListItem(){
+                    UserId = Guid.NewGuid(),
                     Email = "samuel.legrain@bstorm.be",
                     Role = "Admin"
                 },
@@ -62,7 +66,8 @@ namespace TaskManager.ASPMVC.Controllers
                     Email = "thierry.morre@bstorm.be",
                     Role = "User"
                 }
-            };
+            };*/
+            IEnumerable<UserListItem> model = _userService.Get().Select(bll => bll.ToListItem());
             return View(model);
         }
 

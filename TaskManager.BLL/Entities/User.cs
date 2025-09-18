@@ -26,6 +26,12 @@ namespace TaskManager.BLL.Entities
             _disableDate = disableDate;
         }
 
+        public User(string email, string password)
+        {
+            Email = email;
+            Password = password;
+        }
+
         public UserRole ChangeRole()
         {
             Role = (Role == UserRole.User) ? UserRole.Admin : UserRole.User;

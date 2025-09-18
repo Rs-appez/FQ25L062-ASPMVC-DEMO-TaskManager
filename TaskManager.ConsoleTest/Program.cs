@@ -1,5 +1,5 @@
-﻿using TaskManager.DAL.Entities;
-using TaskManager.DAL.Services;
+﻿using TaskManager.BLL.Entities;
+using TaskManager.BLL.Services;
 
 namespace TaskManager.ConsoleTest
 {
@@ -9,14 +9,11 @@ namespace TaskManager.ConsoleTest
         {
             UserService service = new UserService();
 
-            User u1 = new User() { 
-                Email = "samuel.legrain@bstorm.be", 
-                Password = "Test1234="
-            };
+            User u1 = new User("samuel.legrain@bstorm.be", "Test1234=");
 
-            u1.UserId = service.Insert(u1);
+            Guid id = service.Insert(u1);
 
-            u1 = service.Get(u1.UserId);
+            u1 = service.Get(id);
 
             u1 = service.CheckPassword(u1.Email, "Test1234=");
 

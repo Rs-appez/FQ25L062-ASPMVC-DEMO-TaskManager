@@ -85,7 +85,6 @@ namespace TaskManager.DAL.Services
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue(nameof(entity.Title), entity.Title);
                     command.Parameters.AddWithValue(nameof(entity.Description), entity.Description ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue(nameof(entity.CreationDate), entity.CreationDate);
                     command.Parameters.AddWithValue(nameof(entity.CreatorId), entity.CreatorId);
                     command.Parameters.AddWithValue(nameof(entity.DeadLine), entity.DeadLine ?? (object)DBNull.Value);
                     connection.Open();
@@ -105,7 +104,6 @@ namespace TaskManager.DAL.Services
                     command.Parameters.AddWithValue(nameof(taskId), taskId);
                     command.Parameters.AddWithValue(nameof(entity.Title), entity.Title);
                     command.Parameters.AddWithValue(nameof(entity.Description), entity.Description ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue(nameof(entity.CreationDate), entity.CreationDate);
                     command.Parameters.AddWithValue(nameof(entity.DeadLine), entity.DeadLine ?? (object)DBNull.Value);
                     connection.Open();
                     return command.ExecuteNonQuery() > 0;

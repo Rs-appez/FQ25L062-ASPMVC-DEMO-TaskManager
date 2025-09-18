@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,9 +12,9 @@ using TaskManager.DAL.Mapper;
 
 namespace TaskManager.DAL.Services
 {
-    public class UserService : IUserRepository<User>
+    public class UserService : BaseService, IUserRepository<User>
     {
-        private readonly string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TaskManager;Integrated Security=True";
+        public UserService(IConfiguration configuration) : base(configuration, "localDb") { }
 
         public IEnumerable<User> Get()
         {

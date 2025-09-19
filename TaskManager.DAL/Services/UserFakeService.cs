@@ -31,6 +31,11 @@ namespace TaskManager.DAL.Services
             return _users.Find(u => u.UserId == userId) ?? throw new ArgumentOutOfRangeException(nameof(userId));
         }
 
+        public User GetCreator(Guid taskId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Guid Insert(User entity)
         {
             entity.UserId = Guid.NewGuid();

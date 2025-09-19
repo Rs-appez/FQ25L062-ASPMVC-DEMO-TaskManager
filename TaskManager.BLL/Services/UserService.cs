@@ -49,5 +49,10 @@ namespace TaskManager.BLL.Services
         {
             return _dalService.CheckPassword(email, password).ToBLL();
         }
+
+        public User GetCreator(Guid taskId)
+        {
+            return _dalService.GetCreator(taskId).ToBLL();
+        }
     }
 }

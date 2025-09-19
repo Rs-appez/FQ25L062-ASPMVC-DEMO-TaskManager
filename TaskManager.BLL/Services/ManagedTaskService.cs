@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.BLL.Entities;
+using TaskManager.BLL.Mapper;
 using TaskManager.Common.Repositories;
 
 namespace TaskManager.BLL.Services
@@ -28,22 +29,23 @@ namespace TaskManager.BLL.Services
 
         public IEnumerable<ManagedTask> Get()
         {
-            return _dalService.Get();
+            return _dalService.Get().Select(dal => dal.ToBLL());
         }
 
         public ManagedTask Get(Guid taskId)
         {
-            return _dalService.Get(taskId);
+            User creator = _userService.GetCreator(taskId);
+            return _dalService.Get(taskId).ToBLL(creator);
         }
 
         public Guid Insert(ManagedTask entity)
         {
-            return _dalService.Insert(entity);
+            return _dalService.Insert(entity.ToDAL());
         }
 
         public bool Update(Guid taskId, ManagedTask entity)
         {
-            return _dalService.Update(taskId, entity);
+            return _dalService.Update(taskId, entity.ToDAL());
         }
     }
 }

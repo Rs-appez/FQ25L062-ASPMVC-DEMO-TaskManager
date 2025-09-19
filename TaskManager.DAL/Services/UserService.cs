@@ -122,5 +122,27 @@ namespace TaskManager.DAL.Services
                 }
             }
         }
+
+        public User GetCreator(Guid taskId)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SP_User_Get_Creator_ByTaskId";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue(nameof(taskId), taskId);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader.ToUser();
+                        }
+                        throw new ArgumentOutOfRangeException(nameof(taskId));
+                    }
+                }
+            }
+        }
     }
 }

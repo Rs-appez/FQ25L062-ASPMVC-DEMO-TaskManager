@@ -76,6 +76,7 @@
     <Build Include="StoredProcedures\SP_Task_Update.sql" />
     <Build Include="StoredProcedures\SP_Task_Delete.sql" />
     <Build Include="StoredProcedures\SP_TaskUser_ChangeStatus.sql" />
+    <Build Include="StoredProcedures\SP_User_Get_Creator_ByTaskId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TaskManager.DB.publish.xml" />

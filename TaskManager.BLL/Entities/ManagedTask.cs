@@ -17,22 +17,25 @@ namespace TaskManager.BLL.Entities
 
         private Guid _creatorId;
 
-        public ManagedTask(Guid taskId, string title, string? description, DateTime? deadLine, DateTime creationDate, Guid creatorId)
+        public ManagedTask(Guid taskId, string title, string? description, DateTime? deadLine, DateTime creationDate, Guid creatorId) : this (title, description, deadLine, creatorId)
         {
             TaskId = taskId;
-            Title = title;
-            Description = description;
-            DeadLine = deadLine;
             CreationDate = creationDate;
+        }
+        public ManagedTask(string title, string? description, DateTime? deadLine, Guid creatorId) : this (title, description, deadLine)
+        {
             _creatorId = creatorId;
         }
-
-        public ManagedTask(Guid taskId, string title, string? description, DateTime? deadLine, DateTime creationDate, User creator)
+        public ManagedTask(string title, string? description, DateTime? deadLine)
         {
-            TaskId = taskId;
             Title = title;
             Description = description;
             DeadLine = deadLine;
+        }
+
+        public ManagedTask(Guid taskId, string title, string? description, DateTime? deadLine, DateTime creationDate, User creator) : this (title, description, deadLine)
+        {
+            TaskId = taskId;
             CreationDate = creationDate;
             Creator = creator;
             _creatorId = Creator.UserId;

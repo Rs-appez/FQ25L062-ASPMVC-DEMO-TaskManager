@@ -14,6 +14,8 @@ namespace TaskManager.ASPMVC
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IUserRepository<BLL.Entities.User>, B.UserService>();
             builder.Services.AddScoped<IUserRepository<DAL.Entities.User>, D.UserService>();
+            builder.Services.AddScoped<ITaskRepository<BLL.Entities.ManagedTask>, B.ManagedTaskService>();
+            builder.Services.AddScoped<ITaskRepository<DAL.Entities.ManagedTask>, D.ManagedTaskService>();
             //builder.Services.AddScoped<IUserRepository<DAL.Entities.User>, D.UserFakeService>();
 
             var app = builder.Build();

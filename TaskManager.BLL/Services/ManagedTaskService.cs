@@ -29,7 +29,10 @@ namespace TaskManager.BLL.Services
 
         public IEnumerable<ManagedTask> Get()
         {
-            return _dalService.Get().Select(dal => dal.ToBLL());
+            return _dalService.Get().Select(dal => {
+                User creator = _userService.GetCreator(dal.TaskId);
+                return dal.ToBLL(creator);
+            });
         }
 
         public ManagedTask Get(Guid taskId)

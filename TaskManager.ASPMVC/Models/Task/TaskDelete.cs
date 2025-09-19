@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TaskManager.ASPMVC.Models.Task
 {
-    public class TaskDeleteForm
+    public class TaskDelete
     {
         [DisplayName("Sujet : ")]
         public string Title { get; set; }

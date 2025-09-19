@@ -56,7 +56,8 @@ namespace TaskManager.ASPMVC.Controllers
         // GET: TaskController/Edit/5
         public ActionResult Edit(Guid id)
         {
-            return View();
+            TaskEditForm model = _taskService.Get(id).ToEditForm();
+            return View(model);
         }
 
         // POST: TaskController/Edit/5

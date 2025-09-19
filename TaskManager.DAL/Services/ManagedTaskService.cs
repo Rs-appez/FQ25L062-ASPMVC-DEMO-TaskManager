@@ -14,9 +14,7 @@ namespace TaskManager.DAL.Services
 {
     public class ManagedTaskService : BaseService, ITaskRepository<ManagedTask>
     {
-        public ManagedTaskService(IConfiguration configuration, string connectionStringName) : base(configuration, "localDb")
-        {
-        }
+        public ManagedTaskService(IConfiguration configuration) : base(configuration, "localDb"){}
 
         public bool Delete(Guid taskId)
         {

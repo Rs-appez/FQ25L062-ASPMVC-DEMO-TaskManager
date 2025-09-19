@@ -73,6 +73,16 @@ namespace TaskManager.ASPMVC.Mapper
                 CreatorEmail = entity.Creator.Email
             };
         }
+        public static TaskEditForm ToEditForm(this ManagedTask entity)
+        {
+            if (entity is null) throw new ArgumentNullException(nameof(entity));
+            return new TaskEditForm()
+            {
+                Title = entity.Title,
+                Description = entity.Description,
+                DeadLine = entity.DeadLine
+            };
+        }
         #endregion
     }
 }

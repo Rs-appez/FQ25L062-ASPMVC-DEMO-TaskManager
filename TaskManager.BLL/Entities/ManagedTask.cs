@@ -25,6 +25,7 @@ namespace TaskManager.BLL.Entities
         public ManagedTask(string title, string? description, DateTime? deadLine, Guid creatorId) : this (title, description, deadLine)
         {
             _creatorId = creatorId;
+            Creator = new User(creatorId);
         }
         public ManagedTask(string title, string? description, DateTime? deadLine)
         {

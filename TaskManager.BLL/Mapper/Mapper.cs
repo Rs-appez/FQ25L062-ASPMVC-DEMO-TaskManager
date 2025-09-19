@@ -46,7 +46,7 @@ namespace TaskManager.BLL.Mapper
                 Title = entity.Title,
                 Description = entity.Description,
                 CreationDate = entity.CreationDate,
-                CreatorId = entity.Creator.UserId,
+                CreatorId = entity.Creator?.UserId ?? Guid.Empty,
                 DeadLine = entity.DeadLine
             };
         }

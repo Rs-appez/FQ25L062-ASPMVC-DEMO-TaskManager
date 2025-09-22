@@ -1,4 +1,7 @@
-﻿@model TaskManager.ASPMVC.Models.Task.TaskCreateForm
+﻿@model TaskCreateForm
+
+@* Pour notre balise Select *@
+@inject IUserRepository<User> _userService
 
 @{
     ViewData["Title"] = "Create";
@@ -29,7 +32,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="CreatorId" class="control-label"></label>
-                <input asp-for="CreatorId" class="form-control" />
+                @* <input asp-for="CreatorId" class="form-control" /> *@
+                @* Transformation de nos User de la BLL en SelectListItem *@
+                <select 
+                    asp-for="CreatorId" 
+                    asp-items="_userService
+                                    .Get()
+                                    .Select(bll => 
+                                        new SelectListItem(bll.Email, bll.UserId.ToString()))">
+                </select>
                 <span asp-validation-for="CreatorId" class="text-danger"></span>
             </div>
             <div class="form-group">
